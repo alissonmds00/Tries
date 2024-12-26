@@ -5,7 +5,7 @@ trie = Trie()
 running = True
 
 while running:
-  escolha = input()
+  escolha = input().lower()
   match escolha:
     case 'i':
       palavra = input().lower()
@@ -25,6 +25,9 @@ while running:
     case 'f':
        trie.imprimir_palavras_mais_buscadas()
     case 'p':
-      trie.pre_ordem()
+      if not trie.palavras:
+        print('trie vazia')
+      else:
+        trie.pre_ordem()
     case 'e':
       running = False
