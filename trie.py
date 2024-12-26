@@ -61,7 +61,7 @@ class Trie:
     palavras_mais_visitadas = []
     maior_num_visitas = 0
     if not self.palavras:
-      return False
+      return False, None
     for no in self.palavras:
       if no.visitas > maior_num_visitas:
         maior_num_visitas = no.visitas
@@ -72,7 +72,7 @@ class Trie:
   
   def imprimir_palavras_mais_buscadas(self):
     palavras, num_visitas = self.obter_palavras_mais_buscadas()
-    if not palavras:
+    if not self.palavras:
         print("trie vazia")
     else:
         print("palavras mais consultadas:")
@@ -80,10 +80,10 @@ class Trie:
             print(palavra)
         print(f"numero de acessos: {num_visitas}")
 
-  def pre_ordem_estendida(self, no=None, prefixo=''):
+  def pre_ordem(self, no=None, prefixo=''):
       if no is None:
           no = self.raiz
-          print("raiz:", end=' ')
+          print(f'letra: raiz -', end= ' ')
       else:
           if no.palavra is not None:
               print(f"letra: {no.chave}", end=' ')
@@ -95,25 +95,6 @@ class Trie:
       print()
 
       for filho in filhos:
-          self.pre_ordem_estendida(no.filhos[filho], prefixo + filho)
+          self.pre_ordem(no.filhos[filho], prefixo + filho)
   
-trie = Trie()
-trie.inserir("teste")
-trie.inserir('cachorro')
-trie.inserir('camundongo')
-trie.inserir('camundongos')
-trie.inserir('testosterona')
-trie.inserir('tes')
-trie.inserir('camu')
-trie.inserir('testes')
-
-#trie.incrementar_visita(trie.buscar('camundongo')[1])
-#print(trie.buscar("azul"))
-print(trie.buscar("teste"))
-#print(trie.buscar("teste"))
-print(trie.contar_consultas("teste"))
-print(trie.buscar("camundongo")[1])
-#print(trie.contar_consultas("azul"))
-print(trie.obter_palavras_mais_buscadas())
-trie.pre_ordem_estendida()
 
