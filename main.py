@@ -21,7 +21,7 @@ while running:
         palavra_alvo[1].incrementar_visitas()  
         print(f'palavra existente: {palavra} {palavra_alvo[1].visitas}')
       else:
-        print(f'palavra inexistente {palavra}')
+        print(f'palavra inexistente: {palavra}')
     case 'f':
        trie.imprimir_palavras_mais_buscadas()
     case 'p':
